@@ -75,7 +75,7 @@ public class Timer {
     }
     
     public void randomCustomerGenerator(){
-        randomCustomerID = (int)(Math.random() * 30) + 1;
+        randomCustomerID = (int)(Math.random() * 201) + 1;
         randomCustomerIDString = Integer.toString(randomCustomerID);
         questionTimeLength = poissonRandom(25);
     }
