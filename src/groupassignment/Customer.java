@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * @author Yuki
  */
 public class Customer {
-    private static int startTime;
+    private static int creationTime;
     private static int finishTime;
     private static int questionTime;
     private static int totalQueueTime;
@@ -78,16 +78,20 @@ public class Customer {
         }
     }
     // Constructore with known variables.
-    public Customer(int startTime, int questionTime, int customerID,
+    public Customer(int creationTime, int questionTime, int customerID,
             String firstName, String lastName){
-        this.startTime = startTime;
-        this.finishTime = startTime + questionTime;
+        this.creationTime = creationTime;
+        this.finishTime = creationTime + questionTime;
         this.questionTime = questionTime;
         this.customerID = customerID;
         this.firstName = firstName;
         this.lastName = lastName;
     }
     
+    // Updates the finish times for the customers.
+    public void updateTime(int addTime){
+        finishTime += addTime;
+    }
     // Set initial position in queue.
     public void setQueueID(int queueID){
         this.queueID = queueID;
@@ -105,12 +109,12 @@ public class Customer {
         return Integer.toString(customerID);
     }
     // Set the time the customer gets into queue.
-    public void setStartTime(int startTime){
-        this.startTime = startTime;
+    public void setCreationTime(int creationTime){
+        this.creationTime = creationTime;
     }
     // Get the time the customer gets into queue.
-    public String getStartTime(){
-        return Integer.toString(startTime);
+    public String getCreationTime(){
+        return Integer.toString(creationTime);
     }
     // Set the time the customer will be finished asking a question.
     public void setFinishTime(int finishTime){

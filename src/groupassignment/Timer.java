@@ -37,8 +37,14 @@ public class Timer {
                 ++customerEnqueueID;
                 Customer customer = new Customer(randomCustomerIDString);
                 customer.setQueueID(customerEnqueueID);
-                customer.setStartTime(i);
+                customer.setCreationTime(i);
                 customer.setQuestionTime(questionTimeLength);
+                //if(HybridQueue.isEmpty()){
+                //  customer.setFinishTime(i + questionTimeLength);
+                //}
+                //else{
+                //  customer.setFinishTime(HybridQueue.getTail().getFinishTime() + questionTimeLength);
+                //}
                 customer.setFinishTime(i + questionTimeLength);
                 System.out.println("Walked in: " + customer.getFirstName()
                         + " " + customer.getLastName() + " at " + i);
@@ -53,7 +59,7 @@ public class Timer {
                 ++customerEnqueueID;
                 Customer customer = new Customer(randomCustomerIDString);
                 customer.setQueueID(customerEnqueueID);
-                customer.setStartTime(i);
+                customer.setCreationTime(i);
                 customer.setQuestionTime(questionTimeLength);
                 customer.setFinishTime(i + questionTimeLength);
                 System.out.println("Called in: " + customer.getFirstName()

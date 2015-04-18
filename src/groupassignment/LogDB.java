@@ -75,7 +75,7 @@ public class LogDB {
                     + info.getCustomerID() + ", "
                     + "'" + info.getFirstName() + "'" + ", "
                     + "'" + info.getLastName() + "'" + ", "
-                    + info.getStartTime() + ", "
+                    + info.getCreationTime() + ", "
                     + info.getFinishTime() + ", "
                     + info.getQuestionTime() + ")");
         }
