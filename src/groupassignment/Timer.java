@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package groupassignment;
+import java.sql.*;
+
 /**
  *
  * @author Yuki
@@ -13,6 +15,7 @@ public class Timer {
         private static int callInCustomerTime;
         private static int questionTimeLength;
         private static int randomCustomerID;
+        private static int nameDatabaseSize;
         private static String randomCustomerIDString;
         
     public Timer(int totalTime){
@@ -22,6 +25,30 @@ public class Timer {
                                                                                 // store here then pass to the LogDB class for logging.
         int customerEnqueueID = 0;
 
+        Connection connect = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        
+        String path = Timer.class.getProtectionDomain().getCodeSource()
+                .getLocation().getPath();
+        
+        try{
+            Class.forName("org.sqlite.JDBC");
+        
+            connect = DriverManager.getConnection(
+                    "jdbc:sqlite:" + path + "CustomerDB.sql");
+            statement = connect.createStatement();
+            statement.setQueryTimeout(30);
+            
+            resultSet = statement.executeQuery(
+                    "SELECT count(*) AS total FROM GeneratedCustomers");
+            
+            nameDatabaseSize = resultSet.getInt("total");
+        }
+        catch(ClassNotFoundException | SQLException ex0){
+            System.err.println(ex0.getMessage());
+        }
+        
         // Clears any previous log tables information from the customer log.
         LogDB.clearLog();
         
@@ -39,12 +66,12 @@ public class Timer {
                 customer.setQueueID(customerEnqueueID);
                 customer.setCreationTime(i);
                 customer.setQuestionTime(questionTimeLength);
-                //if(HybridQueue.isEmpty()){
-                //  customer.setFinishTime(i + questionTimeLength);
-                //}
-                //else{
-                //  customer.setFinishTime(HybridQueue.getTail().getFinishTime() + questionTimeLength);
-                //}
+                                                                                //if(HybridQueue.isEmpty()){
+                                                                                //  customer.setFinishTime(i + questionTimeLength);
+                                                                                //}
+                                                                                //else{
+                                                                                //  customer.setFinishTime(HybridQueue.getTail().getFinishTime() + questionTimeLength);
+                                                                                //}
                 customer.setFinishTime(i + questionTimeLength);
                 System.out.println("Walked in: " + customer.getFirstName()
                         + " " + customer.getLastName() + " at " + i);
@@ -81,7 +108,7 @@ public class Timer {
     }
     
     public void randomCustomerGenerator(){
-        randomCustomerID = (int)(Math.random() * 201) + 1;
+        randomCustomerID = (int)(Math.random() * nameDatabaseSize) + 1;
         randomCustomerIDString = Integer.toString(randomCustomerID);
         questionTimeLength = poissonRandom(25);
     }

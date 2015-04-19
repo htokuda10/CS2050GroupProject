@@ -40,7 +40,7 @@ public class Customer {
             statement = connect.createStatement();
             statement.setQueryTimeout(30);
             resultSet = statement.executeQuery(
-                    "select * from RandomCustomers where customerID="
+                    "select * from GeneratedCustomers where customerID="
                         + randomID);
 
             customerID = resultSet.getInt("customerID");
