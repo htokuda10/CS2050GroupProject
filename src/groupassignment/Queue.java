@@ -26,7 +26,7 @@ public class Queue  {
 
             //update times for customers in queue
             for (Node x = head; x != null; x = x.next) {
-            int time = customer.getQuestionTime(); 
+            int time = customer.getQuestionTime();
 
             }
 
