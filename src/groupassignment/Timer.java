@@ -25,10 +25,15 @@ public class Timer {
      * of the integer argument received.
      * @param totalTime is the length of the simulated time.
      */
-    public Timer(int totalTime) {
+    public Timer(
+            int totalTime, int walkInMean, int callInMean, int questionMean) {
         // Customer priority levels.
+        final int WALK_IN_MEAN = walkInMean;
+        final int CALL_IN_MEAN = callInMean;
+        final int QUESTION_MEAN = questionMean;
         final int WALK_IN_CUSTOMER_PRIORITY = 0;
         final int CALL_IN_CUSTOMER_PRIORITY = 1;
+        Queue hybridQueue = new Queue();
                                                                                 // Customer tempCustomerForInfo; ToDo - when dequeing,
                                                                                 // store here then pass to the LogDB class for logging.
         // The number at which the customer was placed in the queue.
@@ -42,20 +47,35 @@ public class Timer {
         
         String path = Timer.class.getProtectionDomain().getCodeSource()
                 .getLocation().getPath();
+                                                                                // Use this to run on InteliJ.
+                                                                                try {
+                                                                                    Class.forName("org.sqlite.JDBC");
+
+                                                                                    connect = DriverManager.getConnection(
+                                                                                            "jdbc:sqlite:CustomerDB.sql");
+                                                                                    statement = connect.createStatement();
+                                                                                    statement.setQueryTimeout(30);
+                                                                                    // Get total row count on database.
+                                                                                    resultSet = statement.executeQuery(
+                                                                                            "SELECT count(*) AS total FROM GeneratedCustomers");
+                                                                                    // Store total row count into class variable.
+                                                                                    nameDatabaseSize = resultSet.getInt("total");
+                                                                                }
         
-        try {
-            Class.forName("org.sqlite.JDBC");
-        
-            connect = DriverManager.getConnection(
-                    "jdbc:sqlite:" + path + "CustomerDB.sql");
-            statement = connect.createStatement();
-            statement.setQueryTimeout(30);
-            // Get total row count on database.
-            resultSet = statement.executeQuery(
-                    "SELECT count(*) AS total FROM GeneratedCustomers");
-            // Store total row count into class variable.
-            nameDatabaseSize = resultSet.getInt("total");
-        }
+        // This block includes "path".
+//        try {
+//            Class.forName("org.sqlite.JDBC");
+//        
+//            connect = DriverManager.getConnection(
+//                    "jdbc:sqlite:" + path + "CustomerDB.sql");
+//            statement = connect.createStatement();
+//            statement.setQueryTimeout(30);
+//            // Get total row count on database.
+//            resultSet = statement.executeQuery(
+//                    "SELECT count(*) AS total FROM GeneratedCustomers");
+//            // Store total row count into class variable.
+//            nameDatabaseSize = resultSet.getInt("total");
+//        }
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
@@ -64,11 +84,11 @@ public class Timer {
         LogDB.clearLog();
         
         // First walk-in customer.
-        walkInCustomerTime = poissonRandom(45);
+        walkInCustomerTime = poissonRandom(WALK_IN_MEAN);
         // First call-in customer.
-        callInCustomerTime = poissonRandom(55);
+        callInCustomerTime = poissonRandom(CALL_IN_MEAN);
         // Generates customer ID and question time length.
-        randomCustomerGenerator();
+        randomCustomerGenerator(QUESTION_MEAN);
 
         //====================== Start simulated time ====================
         
@@ -82,23 +102,24 @@ public class Timer {
                 customer.setCreationTime(i);
                 customer.setQuestionTime(questionTimeLength);
                   // If the queue is empty, the finish time are not modified.
-//                if(HybridQueue.isEmpty()) {
-//                  customer.setFinishTime(i + questionTimeLength);
-//                }
+                if(hybridQueue.isEmpty()) {
+                  customer.setFinishTime(i + questionTimeLength);
+                }
                   // If the queue is not empty, the finish time is equal to the
                   // the customer aheads finish time + current question time.
-//                else {
-//                  customer.setFinishTime(HybridQueue.getTail().getFinishTime() + questionTimeLength);
-//                }
-                customer.setFinishTime(i + questionTimeLength); // Remove this when queue is built.  This is temporary.
+                else {
+                    Customer tempCustomer = hybridQueue.getTail();
+                    customer.setFinishTime(Integer.parseInt(tempCustomer.getFinishTime()) + questionTimeLength);
+                }
+//                customer.setFinishTime(i + questionTimeLength); // Remove this when queue is built.  This is temporary.
                                                                                 System.out.println("Walked in: " + customer.getFirstName()
                                                                                         + " " + customer.getLastName() + " at " + i);
-                                                                                // HybridQueue.push(customer, WALK_IN_CUSTOMER_PRIORITY); ToDo
-                                                                                LogDB.enterNewLog(customer); // Test log system.
+                hybridQueue.addToQueue(customer, WALK_IN_CUSTOMER_PRIORITY);
+//                                                                                LogDB.enterNewLog(customer); // Test log system.
                 // Set next walk-in customer time.
-                walkInCustomerTime += poissonRandom(45) + questionTimeLength;
+                walkInCustomerTime += poissonRandom(WALK_IN_MEAN);
                 // Set next customers random ID and question length.
-                randomCustomerGenerator();
+                randomCustomerGenerator(QUESTION_MEAN);
             }
             // If it's time for a customer to call in.
             if(i >= callInCustomerTime) {
@@ -113,19 +134,26 @@ public class Timer {
                 customer.setFinishTime(i + questionTimeLength);
                                                                                 System.out.println("Called in: " + customer.getFirstName()
                                                                                         + " " + customer.getLastName() + " at " + i);
-                                                                                // HybridQueue.push(customer, CALL_IN_CUSTOMER_PRIORITY); ToDo
-                                                                                // HybridQueue.updateTimes(questionTimeLength); ToDo
-                                                                                LogDB.enterNewLog(customer); // Test customer log system.
+                hybridQueue.addToQueue(customer, CALL_IN_CUSTOMER_PRIORITY);
+//                                                                                LogDB.enterNewLog(customer); // Test customer log system.
                 // Set next call-in customer time.
-                callInCustomerTime += poissonRandom(55) + questionTimeLength;
+                callInCustomerTime += poissonRandom(CALL_IN_MEAN);
                 // Set next customers random ID and question length.
-                randomCustomerGenerator();
+                randomCustomerGenerator(QUESTION_MEAN);
             }
-                                                                                /*
-                                                                                if(i == HybridQueue.getCurrent().getFinishTime()) {
-                                                                                    tempCustomerForInfo = HybridQueue.dequeue();
-                                                                                }
-                                                                                */
+            try{
+                if(hybridQueue.getHead() != null){
+                    if(i == Integer.parseInt(hybridQueue.getHead().getFinishTime())) {
+                        Customer tempCustomer = hybridQueue.removeFromQueue();
+                        LogDB.enterNewLog(tempCustomer);
+
+                                                                                        System.out.println("Customer removed from queue at: " + i);
+                    }
+                }
+            }
+            catch(NullPointerException ex0){
+                // Do Nothing.
+            }
         }
     }
     /**
@@ -135,10 +163,10 @@ public class Timer {
      * determined by the number or rows contained in the database, which is
      * retrieved in the above connection to the GeneratedCustomers database.
      */
-    public void randomCustomerGenerator() {
+    public void randomCustomerGenerator(int questionMean) {
         randomCustomerID = (int)(Math.random() * nameDatabaseSize) + 1;
         randomCustomerIDString = Integer.toString(randomCustomerID);
-        questionTimeLength = poissonRandom(25);
+        questionTimeLength = poissonRandom(questionMean);
     }
     /**
      * poissonRandom generates a random number based on the mean that is passed
