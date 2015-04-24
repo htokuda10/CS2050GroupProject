@@ -9,21 +9,25 @@ import java.sql.SQLException;
  * information pertaining to that customer.
  * @author Yuki
  */
-public class Customer {
-    private static int creationTime;
-    private static int finishTime;
-    private static int questionTime;
-    private static int totalQueueTime;
-    private static int queueID;
-    private static int customerID;
-    private static String firstName;
-    private static String lastName;
+public final class Customer {
+    private int creationTime;
+    private int finishTime;
+    private int questionTime;
+    private int totalQueueTime;
+    private int queueID;
+    private int customerID;
+    private String firstName;
+    private String lastName;
     /**
      * This constructor will build a new customer and define three variables,
      * customer ID, first name and last name.  The random variables will be
      * generated from the CustomerDB.sql database.
      * @param randomID the customer information location within the database.
      */
+    public Customer(){
+        
+    }
+    
     public Customer(String randomID) {
         
         //======= Start connection to the GeneratedCustomers database =====
@@ -35,35 +39,35 @@ public class Customer {
         String path = Customer.class.getProtectionDomain().getCodeSource()
                 .getLocation().getPath();
                                                                                 // Use this to run on InteliJ.
-                                                                                try {
-                                                                                    Class.forName("org.sqlite.JDBC");
-                                                                                    connect = DriverManager.getConnection(
-                                                                                            "jdbc:sqlite:CustomerDB.sql");
-                                                                                    statement = connect.createStatement();
-                                                                                    statement.setQueryTimeout(30);
-                                                                                    resultSet = statement.executeQuery(
-                                                                                            "select * from GeneratedCustomers where customerID="
-                                                                                                + randomID);
-                                                                                    // Store retrieved data values into currently created customer.
-                                                                                    customerID = resultSet.getInt("customerID");
-                                                                                    firstName = resultSet.getString("firstName");
-                                                                                    lastName = resultSet.getString("lastName");
-                                                                                }
+//                                                                                try {
+//                                                                                    Class.forName("org.sqlite.JDBC");
+//                                                                                    connect = DriverManager.getConnection(
+//                                                                                            "jdbc:sqlite:CustomerDB.sql");
+//                                                                                    statement = connect.createStatement();
+//                                                                                    statement.setQueryTimeout(30);
+//                                                                                    resultSet = statement.executeQuery(
+//                                                                                            "select * from GeneratedCustomers where customerID="
+//                                                                                                + randomID);
+//                                                                                    // Store retrieved data values into currently created customer.
+//                                                                                    customerID = resultSet.getInt("customerID");
+//                                                                                    firstName = resultSet.getString("firstName");
+//                                                                                    lastName = resultSet.getString("lastName");
+//                                                                                }
         // This block includes "path".
-//        try {
-//            Class.forName("org.sqlite.JDBC");
-//            connect = DriverManager.getConnection(
-//                    "jdbc:sqlite:" + path + "CustomerDB.sql");
-//            statement = connect.createStatement();
-//            statement.setQueryTimeout(30);
-//            resultSet = statement.executeQuery(
-//                    "select * from GeneratedCustomers where customerID="
-//                        + randomID);
-//            // Store retrieved data values into currently created customer.
-//            customerID = resultSet.getInt("customerID");
-//            firstName = resultSet.getString("firstName");
-//            lastName = resultSet.getString("lastName");
-//        }
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connect = DriverManager.getConnection(
+                    "jdbc:sqlite:" + path + "CustomerDB.sql");
+            statement = connect.createStatement();
+            statement.setQueryTimeout(30);
+            resultSet = statement.executeQuery(
+                    "select * from GeneratedCustomers where customerID="
+                        + randomID);
+            // Store retrieved data values into currently created customer.
+            customerID = resultSet.getInt("customerID");
+            firstName = resultSet.getString("firstName");
+            lastName = resultSet.getString("lastName");
+        }
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
