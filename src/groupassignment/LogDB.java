@@ -47,8 +47,10 @@ public class LogDB {
             statement.executeUpdate("drop table if exists customerLog");
             statement.executeUpdate("create table customerLog ("
                     + "queueId Integer, customerID Integer, firstName String,"
-                    + " lastName String, startTime Integer, finishTime Integer,"
-                    + " questionTime Integer, remainingQueue)");
+                    + " lastName String, customerType String,"
+                    + " questionAnswered String, startTime Integer,"
+                    + " finishTime Integer, questionTime Integer,"
+                    + " remainingQueue)");
         }
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
@@ -79,7 +81,7 @@ public class LogDB {
      * @param queueSize remaining customers in queue.
      */
     public static void enterNewLog(Customer info, int queueSize) {
-        
+
         //============= Start connection with the log database ==========
         
         Connection connect = null;
@@ -116,6 +118,8 @@ public class LogDB {
                     + info.getCustomerID() + ", "
                     + "'" + info.getFirstName() + "'" + ", "
                     + "'" + info.getLastName() + "'" + ", "
+                    + "'" + info.getCustomerType() + "'" + ", "
+                    + "'" + info.getQuestionAnswered() + "'" + ", "
                     + info.getCreationTime() + ", "
                     + info.getFinishTime() + ", "
                     + info.getQuestionTime() + ", "

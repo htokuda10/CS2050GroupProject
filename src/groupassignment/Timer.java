@@ -36,6 +36,8 @@ public class Timer {
         final int QUESTION_MEAN = questionMean;
         final int WALK_IN_CUSTOMER_PRIORITY = 0;
         final int CALL_IN_CUSTOMER_PRIORITY = 1;
+        final int YES = 0;
+        final int NO = 1;
         Queue hybridQueue = new Queue();
         // The number at which the customer was placed in the queue.
         int customerEnqueueID = 0;
@@ -94,6 +96,20 @@ public class Timer {
         //====================== Start simulated time ====================
         
         for(int i = 0; i < totalTime; i++) {
+            try{
+                // Dequeue head if finish time equals current time(i).
+                // This prevents a finished customer from being pushed back.
+                if(hybridQueue.getHead() != null){
+                    if(i == Integer.parseInt(hybridQueue.getHead().getFinishTime())) {
+                        Customer tempCustomer = hybridQueue.removeFromQueue();
+                        tempCustomer.setQuestionAnswered("YES");
+                        LogDB.enterNewLog(tempCustomer, hybridQueue.size());
+                    }
+                }
+            }
+            catch(NullPointerException ex0){
+                // Do Nothing.
+            }
             // If it's time for a customer to walk in.
             if(i >= walkInCustomerTime) {
                 ++customerEnqueueID;
@@ -102,6 +118,7 @@ public class Timer {
                 customer.setQueueID(customerEnqueueID);
                 customer.setCreationTime(i);
                 customer.setQuestionTime(questionTimeLength);
+                customer.setCustomerType("Walk-In");
                   // If the queue is empty, the finish time are not modified.
                 if(hybridQueue.isEmpty()) {
                   customer.setFinishTime(i + questionTimeLength);
@@ -126,6 +143,7 @@ public class Timer {
                 Customer customer = new Customer(randomCustomerIDString);
                 customer.setQueueID(customerEnqueueID);
                 customer.setCreationTime(i);
+                customer.setCustomerType("Call-In");
                 // Call-in customer never gets modified times because they jump
                 // to the head of the queue.
                 customer.setQuestionTime(questionTimeLength);
@@ -136,16 +154,12 @@ public class Timer {
                 // Set next customers random ID and question length.
                 randomCustomerGenerator(QUESTION_MEAN);
             }
-            try{
-                if(hybridQueue.getHead() != null){
-                    if(i == Integer.parseInt(hybridQueue.getHead().getFinishTime())) {
-                        Customer tempCustomer = hybridQueue.removeFromQueue();
-                        LogDB.enterNewLog(tempCustomer, hybridQueue.size());
-                    }
-                }
-            }
-            catch(NullPointerException ex0){
-                // Do Nothing.
+        }// primary for loop.
+        if(hybridQueue.size() > 0){
+            for(int i = 0; i < hybridQueue.size(); i++) {
+                Customer tempCustomer = hybridQueue.removeFromQueue();
+                tempCustomer.setQuestionAnswered("No");
+                LogDB.enterNewLog(tempCustomer, hybridQueue.size());
             }
         }
     }

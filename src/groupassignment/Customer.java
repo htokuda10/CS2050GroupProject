@@ -18,6 +18,8 @@ public final class Customer {
     private int customerID;
     private String firstName;
     private String lastName;
+    private String customerType;
+    private String questionAnswered;
     /**
      * This constructor will build a new customer and define three variables,
      * customer ID, first name and last name.  The random variables will be
@@ -161,6 +163,22 @@ public final class Customer {
     // Get the time the customer was in queue, for the record.
     public String getTotalQueueTime() {
         return Integer.toString(totalQueueTime);
+    }
+    // Set queue type(walk-in or call-in).
+    public void setCustomerType(String queueType){
+        this.customerType = queueType;
+    }
+    // Get queue type(walk-in or call-in).
+    public String getCustomerType(){
+        return customerType;
+    }
+    // Set question answered.
+    public void setQuestionAnswered(String answered) {
+        this.questionAnswered = answered;
+    }
+    // Get question answered.
+    public String getQuestionAnswered(){
+        return questionAnswered;
     }
     // Get the customers first anem, for the record.
     public void setFirstName(String firstName) {

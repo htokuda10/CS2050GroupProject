@@ -53,7 +53,7 @@ public class Queue  {
                     */
                     // update times for customers in queue.
                     int time = Integer.parseInt(customer.getQuestionTime());
-                    for (Node x = head; x != null; x = x.next) {
+                    for (Node x = head.next; x != null; x = x.next) {
                         x.data.updateTime(time);
                     }
                 } 
