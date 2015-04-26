@@ -38,7 +38,7 @@ public class LogDB {
                                                                                             + " remainingQueue)");
                                                                                 }
         
-//        // This block includes "PATH".
+        // This block includes "PATH".
 //        try {
 //            Class.forName("org.sqlite.JDBC");
 //            
@@ -101,9 +101,12 @@ public class LogDB {
                                                                                             + info.getCustomerID() + ", "
                                                                                             + "'" + info.getFirstName() + "'" + ", "
                                                                                             + "'" + info.getLastName() + "'" + ", "
+                                                                                            + "'" + info.getCustomerType() + "'" + ", "
+                                                                                            + "'" + info.getQuestionAnswered() + "'" + ", "
                                                                                             + info.getCreationTime() + ", "
                                                                                             + info.getFinishTime() + ", "
-                                                                                            + info.getQuestionTime() + ")");
+                                                                                            + info.getQuestionTime() + ", "
+                                                                                            + Integer.toString(queueSize) + ")");
                                                                                 }
         
         // This block includes "PATH".
