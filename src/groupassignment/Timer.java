@@ -51,34 +51,34 @@ public class Timer {
         String path = Timer.class.getProtectionDomain().getCodeSource()
                 .getLocation().getPath();
                                                                                 // Use this to run on InteliJ.
-//                                                                                try {
-//                                                                                    Class.forName("org.sqlite.JDBC");
-//
-//                                                                                    connect = DriverManager.getConnection(
-//                                                                                            "jdbc:sqlite:CustomerDB.sql");
-//                                                                                    statement = connect.createStatement();
-//                                                                                    statement.setQueryTimeout(30);
-//                                                                                    // Get total row count on database.
-//                                                                                    resultSet = statement.executeQuery(
-//                                                                                            "SELECT count(*) AS total FROM GeneratedCustomers");
-//                                                                                    // Store total row count into class variable.
-//                                                                                    nameDatabaseSize = resultSet.getInt("total");
-//                                                                                }
+                                                                                try {
+                                                                                    Class.forName("org.sqlite.JDBC");
+
+                                                                                    connect = DriverManager.getConnection(
+                                                                                            "jdbc:sqlite:CustomerDB.sql");
+                                                                                    statement = connect.createStatement();
+                                                                                    statement.setQueryTimeout(30);
+                                                                                    // Get total row count on database.
+                                                                                    resultSet = statement.executeQuery(
+                                                                                            "SELECT count(*) AS total FROM GeneratedCustomers");
+                                                                                    // Store total row count into class variable.
+                                                                                    nameDatabaseSize = resultSet.getInt("total");
+                                                                                }
         
         // This block includes "path".
-        try {
-            Class.forName("org.sqlite.JDBC");
-        
-            connect = DriverManager.getConnection(
-                    "jdbc:sqlite:" + path + "CustomerDB.sql");
-            statement = connect.createStatement();
-            statement.setQueryTimeout(30);
-            // Get total row count on database.
-            resultSet = statement.executeQuery(
-                    "SELECT count(*) AS total FROM GeneratedCustomers");
-            // Store total row count into class variable.
-            nameDatabaseSize = resultSet.getInt("total");
-        }
+//        try {
+//            Class.forName("org.sqlite.JDBC");
+//        
+//            connect = DriverManager.getConnection(
+//                    "jdbc:sqlite:" + path + "CustomerDB.sql");
+//            statement = connect.createStatement();
+//            statement.setQueryTimeout(30);
+//            // Get total row count on database.
+//            resultSet = statement.executeQuery(
+//                    "SELECT count(*) AS total FROM GeneratedCustomers");
+//            // Store total row count into class variable.
+//            nameDatabaseSize = resultSet.getInt("total");
+//        }
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
