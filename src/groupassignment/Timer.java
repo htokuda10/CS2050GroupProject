@@ -111,13 +111,8 @@ public class Timer {
                 // Do Nothing.
             }
             // If it's time for a customer to walk in.
-<<<<<<< HEAD
-//                                                                                System.out.println(i + " : " + walkInCustomerTime);
+
             if(i == walkInCustomerTime) {
-                                                                                System.out.println("Walk-in");
-=======
-            if(i == walkInCustomerTime) {
->>>>>>> 922b632a45ee8c8ae548b9267e5718cfd9657fe8
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);
@@ -127,13 +122,11 @@ public class Timer {
                 customer.setCustomerType("Walk-In");
                   // If the queue is empty, the finish time are not modified.
                 if(hybridQueue.isEmpty()) {
-//                                                                                System.out.println("Queue is empty.");
                   customer.setFinishTime(i + questionTimeLength);
                 }
                   // If the queue is not empty, the finish time is equal to the
                   // the customer aheads finish time + current question time.
                 else {
-//                                                                                System.out.println("Queue is NOT empty.");
                     Customer tempCustomer = hybridQueue.getTail();
                     customer.setFinishTime(Integer.parseInt(
                             tempCustomer.getFinishTime()) + questionTimeLength);
@@ -143,14 +136,9 @@ public class Timer {
                 walkInCustomerTime += poissonRandom(WALK_IN_MEAN);
                 // Set next customers random ID and question length.
                 randomCustomerGenerator(QUESTION_MEAN);
-                                                                                System.out.println("Walk-in added.\n");
             }
             // If it's time for a customer to call in.
             if(i == callInCustomerTime) {
-<<<<<<< HEAD
-                                                                                System.out.println("Call-in");
-=======
->>>>>>> 922b632a45ee8c8ae548b9267e5718cfd9657fe8
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);
@@ -166,11 +154,10 @@ public class Timer {
                 callInCustomerTime += poissonRandom(CALL_IN_MEAN);
                 // Set next customers random ID and question length.
                 randomCustomerGenerator(QUESTION_MEAN);
-                                                                                System.out.println("Call-in added.\n");
             }
         }// primary for loop.
         if(hybridQueue.size() > 0){
-            for(int i = 0; i < hybridQueue.size(); i++) {
+            for(int i = 0; !hybridQueue.isEmpty() ; i++) {
                 Customer tempCustomer = hybridQueue.removeFromQueue();
                 tempCustomer.setQuestionAnswered("No");
                 LogDB.enterNewLog(tempCustomer, hybridQueue.size());
