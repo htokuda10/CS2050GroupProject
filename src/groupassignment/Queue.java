@@ -143,6 +143,7 @@ public class Queue  {
     
     public Customer removeFromQueue() { // Delete this.
         Node returnNode = null;
+<<<<<<< HEAD
         if (head != null){
             returnNode = head;
             head = head.getNext();
@@ -150,6 +151,14 @@ public class Queue  {
                                                                                 System.out.println("Removed head. Remaining: " + N);
         }
         return returnNode.getData();
+=======
+        if (head != null) {
+            returnNode = head;
+            head = head.next;
+            --N;
+        }
+        return returnNode.data;
+>>>>>>> 922b632a45ee8c8ae548b9267e5718cfd9657fe8
     } // end removeFromQueue
     
 
@@ -195,6 +204,7 @@ public class Queue  {
     public int size() {
         return N;
     }
+<<<<<<< HEAD
 } // end Queue class
 
 
@@ -218,3 +228,15 @@ class Node {
         return this.next;
     }
 }
+=======
+
+    public void getSizeNew() {
+        int queueSize = 0;
+        for (Node x = head.next; x != null; x = x.next) {
+            queueSize++;
+            System.out.println("The size of the queue is " + queueSize);
+        }
+
+    }
+} // end Queue class
+>>>>>>> 922b632a45ee8c8ae548b9267e5718cfd9657fe8

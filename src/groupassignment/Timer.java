@@ -111,9 +111,13 @@ public class Timer {
                 // Do Nothing.
             }
             // If it's time for a customer to walk in.
+<<<<<<< HEAD
 //                                                                                System.out.println(i + " : " + walkInCustomerTime);
             if(i == walkInCustomerTime) {
                                                                                 System.out.println("Walk-in");
+=======
+            if(i == walkInCustomerTime) {
+>>>>>>> 922b632a45ee8c8ae548b9267e5718cfd9657fe8
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);
@@ -143,7 +147,10 @@ public class Timer {
             }
             // If it's time for a customer to call in.
             if(i == callInCustomerTime) {
+<<<<<<< HEAD
                                                                                 System.out.println("Call-in");
+=======
+>>>>>>> 922b632a45ee8c8ae548b9267e5718cfd9657fe8
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);

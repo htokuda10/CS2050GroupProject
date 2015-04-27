@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="Customer DB" uuid="84f9eb3d-e96d-42ed-a181-3ca5bf100e01">
+    <database-info product="SQLite" version="3.8.7" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <schema name="" catalog=""/>
+    <table name="GeneratedCustomers" schema="" catalog="" type="TABLE">
+      <column name="customerID" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="firstName" sqlType="STRING" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="lastName" sqlType="STRING" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <primary-key columns="customerid"/>
+    </table>
+    <table name="RandomCustomers" schema="" catalog="" type="TABLE">
+      <column name="customerID" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="firstName" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="lastName" sqlType="TEXT" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+    </table>
+    <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
+      <column name="name" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="seq" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+    </table>
+  </data-source>
+  <data-source name="Log DB" uuid="2014e9da-b9c8-4e26-a641-b28e4267939c">
+    <database-info product="SQLite" version="3.8.7" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <schema name="" catalog=""/>
+    <table name="customerLog" schema="" catalog="" type="TABLE">
+      <column name="queueId" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="customerID" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="firstName" sqlType="STRING" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="lastName" sqlType="STRING" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="startTime" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="finishTime" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+      <column name="questionTime" sqlType="INTEGER" precision="2000000000" scale="10" nullable="true" jdbcType="4"/>
+    </table>
+  </data-source>
+</component>
