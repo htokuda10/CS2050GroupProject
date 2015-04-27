@@ -51,34 +51,34 @@ public class Timer {
         String path = Timer.class.getProtectionDomain().getCodeSource()
                 .getLocation().getPath();
                                                                                 // Use this to run on InteliJ.
-                                                                                try {
-                                                                                    Class.forName("org.sqlite.JDBC");
-
-                                                                                    connect = DriverManager.getConnection(
-                                                                                            "jdbc:sqlite:CustomerDB.sql");
-                                                                                    statement = connect.createStatement();
-                                                                                    statement.setQueryTimeout(30);
-                                                                                    // Get total row count on database.
-                                                                                    resultSet = statement.executeQuery(
-                                                                                            "SELECT count(*) AS total FROM GeneratedCustomers");
-                                                                                    // Store total row count into class variable.
-                                                                                    nameDatabaseSize = resultSet.getInt("total");
-                                                                                }
+//                                                                                try {
+//                                                                                    Class.forName("org.sqlite.JDBC");
+//
+//                                                                                    connect = DriverManager.getConnection(
+//                                                                                            "jdbc:sqlite:CustomerDB.sql");
+//                                                                                    statement = connect.createStatement();
+//                                                                                    statement.setQueryTimeout(30);
+//                                                                                    // Get total row count on database.
+//                                                                                    resultSet = statement.executeQuery(
+//                                                                                            "SELECT count(*) AS total FROM GeneratedCustomers");
+//                                                                                    // Store total row count into class variable.
+//                                                                                    nameDatabaseSize = resultSet.getInt("total");
+//                                                                                }
         
         // This block includes "path".
-//        try {
-//            Class.forName("org.sqlite.JDBC");
-//        
-//            connect = DriverManager.getConnection(
-//                    "jdbc:sqlite:" + path + "CustomerDB.sql");
-//            statement = connect.createStatement();
-//            statement.setQueryTimeout(30);
-//            // Get total row count on database.
-//            resultSet = statement.executeQuery(
-//                    "SELECT count(*) AS total FROM GeneratedCustomers");
-//            // Store total row count into class variable.
-//            nameDatabaseSize = resultSet.getInt("total");
-//        }
+        try {
+            Class.forName("org.sqlite.JDBC");
+        
+            connect = DriverManager.getConnection(
+                    "jdbc:sqlite:" + path + "CustomerDB.sql");
+            statement = connect.createStatement();
+            statement.setQueryTimeout(30);
+            // Get total row count on database.
+            resultSet = statement.executeQuery(
+                    "SELECT count(*) AS total FROM GeneratedCustomers");
+            // Store total row count into class variable.
+            nameDatabaseSize = resultSet.getInt("total");
+        }
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
@@ -111,7 +111,9 @@ public class Timer {
                 // Do Nothing.
             }
             // If it's time for a customer to walk in.
-            if(i >= walkInCustomerTime) {
+//                                                                                System.out.println(i + " : " + walkInCustomerTime);
+            if(i == walkInCustomerTime) {
+                                                                                System.out.println("Walk-in");
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);
@@ -121,11 +123,13 @@ public class Timer {
                 customer.setCustomerType("Walk-In");
                   // If the queue is empty, the finish time are not modified.
                 if(hybridQueue.isEmpty()) {
+//                                                                                System.out.println("Queue is empty.");
                   customer.setFinishTime(i + questionTimeLength);
                 }
                   // If the queue is not empty, the finish time is equal to the
                   // the customer aheads finish time + current question time.
                 else {
+//                                                                                System.out.println("Queue is NOT empty.");
                     Customer tempCustomer = hybridQueue.getTail();
                     customer.setFinishTime(Integer.parseInt(
                             tempCustomer.getFinishTime()) + questionTimeLength);
@@ -135,9 +139,11 @@ public class Timer {
                 walkInCustomerTime += poissonRandom(WALK_IN_MEAN);
                 // Set next customers random ID and question length.
                 randomCustomerGenerator(QUESTION_MEAN);
+                                                                                System.out.println("Walk-in added.\n");
             }
             // If it's time for a customer to call in.
-            if(i >= callInCustomerTime) {
+            if(i == callInCustomerTime) {
+                                                                                System.out.println("Call-in");
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);
@@ -153,6 +159,7 @@ public class Timer {
                 callInCustomerTime += poissonRandom(CALL_IN_MEAN);
                 // Set next customers random ID and question length.
                 randomCustomerGenerator(QUESTION_MEAN);
+                                                                                System.out.println("Call-in added.\n");
             }
         }// primary for loop.
         if(hybridQueue.size() > 0){
@@ -187,7 +194,7 @@ public class Timer {
         double poissonRandomNum;
         
         randomNum = Math.random();
-        poissonRandomNum = mean * -Math.log(randomNum);
+        poissonRandomNum = (mean * -Math.log(randomNum)) + 1;
 
         return (int)poissonRandomNum;
     }

@@ -23,37 +23,37 @@ public class LogDB {
         Connection connect = null;
         Statement statement = null;
                                                                                 // Use this for InteliJ.
-                                                                                try {
-                                                                                    Class.forName("org.sqlite.JDBC");
-
-                                                                                    connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
-                                                                                    statement = connect.createStatement();
-                                                                                    statement.setQueryTimeout(30);
-                                                                                    statement.executeUpdate("drop table if exists customerLog");
-                                                                                    statement.executeUpdate("create table customerLog ("
-                                                                                            + "queueId Integer, customerID Integer, firstName String,"
-                                                                                            + " lastName String, customerType String,"
-                                                                                            + " questionAnswered String, startTime Integer,"
-                                                                                            + " finishTime Integer, questionTime Integer,"
-                                                                                            + " remainingQueue)");
-                                                                                }
+//                                                                                try {
+//                                                                                    Class.forName("org.sqlite.JDBC");
+//
+//                                                                                    connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
+//                                                                                    statement = connect.createStatement();
+//                                                                                    statement.setQueryTimeout(30);
+//                                                                                    statement.executeUpdate("drop table if exists customerLog");
+//                                                                                    statement.executeUpdate("create table customerLog ("
+//                                                                                            + "queueId Integer, customerID Integer, firstName String,"
+//                                                                                            + " lastName String, customerType String,"
+//                                                                                            + " questionAnswered String, startTime Integer,"
+//                                                                                            + " finishTime Integer, questionTime Integer,"
+//                                                                                            + " remainingQueue)");
+//                                                                                }
         
         // This block includes "PATH".
-//        try {
-//            Class.forName("org.sqlite.JDBC");
-//            
-//            connect = DriverManager.getConnection("jdbc:sqlite:" + PATH
-//                + "LogDB.sql");
-//            statement = connect.createStatement();
-//            statement.setQueryTimeout(30);
-//            statement.executeUpdate("drop table if exists customerLog");
-//            statement.executeUpdate("create table customerLog ("
-//                    + "queueId Integer, customerID Integer, firstName String,"
-//                    + " lastName String, customerType String,"
-//                    + " questionAnswered String, startTime Integer,"
-//                    + " finishTime Integer, questionTime Integer,"
-//                    + " remainingQueue)");
-//        }
+        try {
+            Class.forName("org.sqlite.JDBC");
+            
+            connect = DriverManager.getConnection("jdbc:sqlite:" + PATH
+                + "LogDB.sql");
+            statement = connect.createStatement();
+            statement.setQueryTimeout(30);
+            statement.executeUpdate("drop table if exists customerLog");
+            statement.executeUpdate("create table customerLog ("
+                    + "queueId Integer, customerID Integer, firstName String,"
+                    + " lastName String, customerType String,"
+                    + " questionAnswered String, startTime Integer,"
+                    + " finishTime Integer, questionTime Integer,"
+                    + " remainingQueue)");
+        }
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
@@ -89,47 +89,47 @@ public class LogDB {
         Connection connect = null;
         Statement statement = null;
                                                                                 // Use this for InteliJ.
-                                                                                try {
-                                                                                    Class.forName("org.sqlite.JDBC");
-
-                                                                                    connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
-                                                                                    statement = connect.createStatement();
-                                                                                    statement.setQueryTimeout(30);
-
-                                                                                    statement.executeUpdate("insert into CustomerLog values("
-                                                                                            + info.getQueueID() + ", "
-                                                                                            + info.getCustomerID() + ", "
-                                                                                            + "'" + info.getFirstName() + "'" + ", "
-                                                                                            + "'" + info.getLastName() + "'" + ", "
-                                                                                            + "'" + info.getCustomerType() + "'" + ", "
-                                                                                            + "'" + info.getQuestionAnswered() + "'" + ", "
-                                                                                            + info.getCreationTime() + ", "
-                                                                                            + info.getFinishTime() + ", "
-                                                                                            + info.getQuestionTime() + ", "
-                                                                                            + Integer.toString(queueSize) + ")");
-                                                                                }
+//                                                                                try {
+//                                                                                    Class.forName("org.sqlite.JDBC");
+//
+//                                                                                    connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
+//                                                                                    statement = connect.createStatement();
+//                                                                                    statement.setQueryTimeout(30);
+//
+//                                                                                    statement.executeUpdate("insert into CustomerLog values("
+//                                                                                            + info.getQueueID() + ", "
+//                                                                                            + info.getCustomerID() + ", "
+//                                                                                            + "'" + info.getFirstName() + "'" + ", "
+//                                                                                            + "'" + info.getLastName() + "'" + ", "
+//                                                                                            + "'" + info.getCustomerType() + "'" + ", "
+//                                                                                            + "'" + info.getQuestionAnswered() + "'" + ", "
+//                                                                                            + info.getCreationTime() + ", "
+//                                                                                            + info.getFinishTime() + ", "
+//                                                                                            + info.getQuestionTime() + ", "
+//                                                                                            + Integer.toString(queueSize) + ")");
+//                                                                                }
         
         // This block includes "PATH".
-//        try {
-//            Class.forName("org.sqlite.JDBC");
-//            
-//            connect = DriverManager.getConnection("jdbc:sqlite:" + PATH
-//                    + "LogDB.sql");
-//            statement = connect.createStatement();
-//            statement.setQueryTimeout(30);
-//
-//            statement.executeUpdate("insert into CustomerLog values("
-//                    + info.getQueueID() + ", "
-//                    + info.getCustomerID() + ", "
-//                    + "'" + info.getFirstName() + "'" + ", "
-//                    + "'" + info.getLastName() + "'" + ", "
-//                    + "'" + info.getCustomerType() + "'" + ", "
-//                    + "'" + info.getQuestionAnswered() + "'" + ", "
-//                    + info.getCreationTime() + ", "
-//                    + info.getFinishTime() + ", "
-//                    + info.getQuestionTime() + ", "
-//                    + Integer.toString(queueSize) + ")");
-//        }
+        try {
+            Class.forName("org.sqlite.JDBC");
+            
+            connect = DriverManager.getConnection("jdbc:sqlite:" + PATH
+                    + "LogDB.sql");
+            statement = connect.createStatement();
+            statement.setQueryTimeout(30);
+
+            statement.executeUpdate("insert into CustomerLog values("
+                    + info.getQueueID() + ", "
+                    + info.getCustomerID() + ", "
+                    + "'" + info.getFirstName() + "'" + ", "
+                    + "'" + info.getLastName() + "'" + ", "
+                    + "'" + info.getCustomerType() + "'" + ", "
+                    + "'" + info.getQuestionAnswered() + "'" + ", "
+                    + info.getCreationTime() + ", "
+                    + info.getFinishTime() + ", "
+                    + info.getQuestionTime() + ", "
+                    + Integer.toString(queueSize) + ")");
+        }
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }

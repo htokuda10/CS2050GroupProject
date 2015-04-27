@@ -8,6 +8,6 @@ public class GroupAssignment {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Timer newTimer = new Timer(3600, 24, 45, 55);
+        Timer newTimer = new Timer(3000, 24, 45, 55);
     }
 }
