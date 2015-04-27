@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1817456561">
+    <data-source source="LOCAL" name="Customer DB" uuid="84f9eb3d-e96d-42ed-a181-3ca5bf100e01">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/CustomerDB.sql</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Log DB" uuid="2014e9da-b9c8-4e26-a641-b28e4267939c">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/LogDB.sql</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

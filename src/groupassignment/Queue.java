@@ -79,10 +79,11 @@ public class Queue  {
     // removing from front of linked list
     public Customer removeFromQueue() {
         Node returnNode = null;
-        if (head != null)
+        if (head != null) {
             returnNode = head;
             head = head.next;
-        --N;
+            --N;
+        }
         return returnNode.data;
     } // end removeFromQueue
 
@@ -117,5 +118,14 @@ public class Queue  {
     // Returns the size of the queue.
     public int size() {
         return N;
+    }
+
+    public void getSizeNew() {
+        int queueSize = 0;
+        for (Node x = head.next; x != null; x = x.next) {
+            queueSize++;
+            System.out.println("The size of the queue is " + queueSize);
+        }
+
     }
 } // end Queue class

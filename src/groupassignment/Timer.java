@@ -111,7 +111,7 @@ public class Timer {
                 // Do Nothing.
             }
             // If it's time for a customer to walk in.
-            if(i >= walkInCustomerTime) {
+            if(i == walkInCustomerTime) {
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);
@@ -137,7 +137,7 @@ public class Timer {
                 randomCustomerGenerator(QUESTION_MEAN);
             }
             // If it's time for a customer to call in.
-            if(i >= callInCustomerTime) {
+            if(i == callInCustomerTime) {
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
                 Customer customer = new Customer(randomCustomerIDString);
@@ -187,7 +187,7 @@ public class Timer {
         double poissonRandomNum;
         
         randomNum = Math.random();
-        poissonRandomNum = mean * -Math.log(randomNum);
+        poissonRandomNum = (mean * -Math.log(randomNum)) + 1;
 
         return (int)poissonRandomNum;
     }
