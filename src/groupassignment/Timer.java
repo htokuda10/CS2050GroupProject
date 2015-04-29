@@ -29,7 +29,7 @@ public class Timer {
      * @param questionMean
      */
     public Timer(
-            int totalTime, int walkInMean, int callInMean, int questionMean) {
+            int totalTime, int questionMean, int walkInMean, int callInMean) {
         // Customer priority levels.
         final int WALK_IN_MEAN = walkInMean;
         final int CALL_IN_MEAN = callInMean;
