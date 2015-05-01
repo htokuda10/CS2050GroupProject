@@ -1,4 +1,6 @@
 package groupassignment;
+
+import javax.swing.*;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -29,7 +31,8 @@ public class Timer {
      * @param questionMean
      */
     public Timer(
-            int totalTime, int questionMean, int walkInMean, int callInMean) {
+            int totalTime, int questionMean, int walkInMean, int callInMean,
+            JTextArea results) {
         // Customer priority levels.
         final int WALK_IN_MEAN = walkInMean;
         final int CALL_IN_MEAN = callInMean;
@@ -44,28 +47,27 @@ public class Timer {
 
         //====== Start connection to the GeneratedCustomers database =====
         
-        Connection connect = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        
+        Connection connect;
+        Statement statement;
+        ResultSet resultSet;
+
+        // Use this to run on InteliJ.
+        try {
+            Class.forName("org.sqlite.JDBC");
+
+            connect = DriverManager.getConnection("jdbc:sqlite:CustomerDB.sql");
+            statement = connect.createStatement();
+            statement.setQueryTimeout(30);
+            // Get total row count on database.
+            resultSet = statement.executeQuery(
+                    "SELECT count(*) AS total FROM GeneratedCustomers");
+            // Store total row count into class variable.
+            nameDatabaseSize = resultSet.getInt("total");
+        }
+        /*
+        // This block includes "path".
         String path = Timer.class.getProtectionDomain().getCodeSource()
                 .getLocation().getPath();
-                                                                                // Use this to run on InteliJ.
-//                                                                                try {
-//                                                                                    Class.forName("org.sqlite.JDBC");
-//
-//                                                                                    connect = DriverManager.getConnection(
-//                                                                                            "jdbc:sqlite:CustomerDB.sql");
-//                                                                                    statement = connect.createStatement();
-//                                                                                    statement.setQueryTimeout(30);
-//                                                                                    // Get total row count on database.
-//                                                                                    resultSet = statement.executeQuery(
-//                                                                                            "SELECT count(*) AS total FROM GeneratedCustomers");
-//                                                                                    // Store total row count into class variable.
-//                                                                                    nameDatabaseSize = resultSet.getInt("total");
-//                                                                                }
-        
-        // This block includes "path".
         try {
             Class.forName("org.sqlite.JDBC");
         
@@ -79,6 +81,7 @@ public class Timer {
             // Store total row count into class variable.
             nameDatabaseSize = resultSet.getInt("total");
         }
+        */
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
@@ -98,20 +101,23 @@ public class Timer {
         for(int i = 0; i < totalTime; i++) {
             try{
                 // Dequeue head if finish time equals current time(i).
-                // This prevents a finished customer from being pushed back.
                 if(hybridQueue.getHead() != null){
                     if(i == Integer.parseInt(hybridQueue.getHead().getFinishTime())) {
                         Customer tempCustomer = hybridQueue.removeFromQueue();
                         tempCustomer.setQuestionAnswered("YES");
                         LogDB.enterNewLog(tempCustomer, hybridQueue.size());
-                    }
+                        results.append(tempCustomer.getFirstName() + " " +
+                                tempCustomer.getLastName() + ", customer " +
+                                tempCustomer.getQueueID() +
+                                ", got her question answered at " + i +
+                                " seconds. " + hybridQueue.size() +
+                                " remain in line.\n");
+                    }  // if question answered
                 }
             }
-            catch(NullPointerException ex0){
-                // Do Nothing.
-            }
-            // If it's time for a customer to walk in.
+            catch (NullPointerException npe) { /* Do Nothing */ }
 
+            // If it's time for a customer to walk in.
             if(i == walkInCustomerTime) {
                 ++customerEnqueueID;
                 // Create the customer and set the customer values.
@@ -136,6 +142,13 @@ public class Timer {
                 walkInCustomerTime += poissonRandom(WALK_IN_MEAN);
                 // Set next customers random ID and question length.
                 randomCustomerGenerator(QUESTION_MEAN);
+
+                // display this event in the GUI
+                results.append(customer.getFirstName() + " " +
+                        customer.getLastName() + ", customer " +
+                        customer.getQueueID() + ", walked in at " + i +
+                        " seconds. " + hybridQueue.size() +" are in line.\n");
+                //results.repaint();
             }
             // If it's time for a customer to call in.
             if(i == callInCustomerTime) {
@@ -154,10 +167,18 @@ public class Timer {
                 callInCustomerTime += poissonRandom(CALL_IN_MEAN);
                 // Set next customers random ID and question length.
                 randomCustomerGenerator(QUESTION_MEAN);
+
+                // display this event in the GUI
+                results.append(customer.getFirstName() + " " +
+                        customer.getLastName() + ", customer " +
+                        customer.getQueueID() + ", called at " + i +
+                        " seconds. " + hybridQueue.size() +" are in line.\n");
+                results.repaint();
             }
-        }// primary for loop.
+        }  // primary for loop.
+
         if(hybridQueue.size() > 0){
-            for(int i = 0; !hybridQueue.isEmpty() ; i++) {
+            for( ; !hybridQueue.isEmpty(); ) {
                 Customer tempCustomer = hybridQueue.removeFromQueue();
                 tempCustomer.setQuestionAnswered("No");
                 LogDB.enterNewLog(tempCustomer, hybridQueue.size());
@@ -191,5 +212,8 @@ public class Timer {
         poissonRandomNum = (mean * -Math.log(randomNum)) + 1;
 
         return (int)poissonRandomNum;
+    }
+    public void printResult(JTextArea screen) {
+        //
     }
 }
