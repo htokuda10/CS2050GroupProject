@@ -2,6 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ff718b9-b0ef-41a1-8631-640241580d82" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_exit.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_reset.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_save.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_simulate.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btns.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btns.psd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash.psd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash_center.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash_east.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash_west.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CS2050GroupProject.iws" />
@@ -422,6 +433,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
     <list size="1">
       <item index="0" class="java.lang.String" itemvalue="Application.GroupAssignment" />
     </list>
@@ -467,7 +484,7 @@
       <workItem from="1430460682471" duration="26629000" />
       <workItem from="1430519271128" duration="868000" />
       <workItem from="1430520309796" duration="89000" />
-      <workItem from="1430520464421" duration="698000" />
+      <workItem from="1430520464421" duration="885000" />
     </task>
     <task id="LOCAL-00001" summary="Updates from Jason">
       <created>1430519952754</created>
@@ -481,11 +498,17 @@
       <option name="project" value="LOCAL" />
       <updated>1430520575431</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updates from Jason">
+      <created>1430521228461</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1430521228461</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87712000" />
+    <option name="totallyTimeSpent" value="87899000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
