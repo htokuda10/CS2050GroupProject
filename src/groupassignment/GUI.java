@@ -341,7 +341,7 @@ public class GUI {
         northPanel.setLayout(new BorderLayout());
         results = new JTextArea("Results from a(n) " +
                 totalTimeSlider.getValue() + "-minute simulation with the" +
-                "following settings: \n\n- " + questionMeanSlider.getValue() +
+                " following settings: \n\n- " + questionMeanSlider.getValue() +
                 " seconds, on average to answer a question\n- " +
                 walkInMeanSlider.getValue() +
                 " seconds, on average, between walk-in customers\n- " +
