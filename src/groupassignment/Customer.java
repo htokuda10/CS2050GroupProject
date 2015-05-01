@@ -26,10 +26,6 @@ public final class Customer {
      * generated from the CustomerDB.sql database.
      * @param randomID the customer information location within the database.
      */
-    public Customer(){
-        
-    }
-    
     public Customer(String randomID) {
         
         //======= Start connection to the GeneratedCustomers database =====
@@ -41,22 +37,22 @@ public final class Customer {
         String path = Customer.class.getProtectionDomain().getCodeSource()
                 .getLocation().getPath();
                                                                                 // Use this to run on InteliJ.
-//                                                                                try {
-//                                                                                    Class.forName("org.sqlite.JDBC");
-//                                                                                    connect = DriverManager.getConnection(
-//                                                                                            "jdbc:sqlite:CustomerDB.sql");
-//                                                                                    statement = connect.createStatement();
-//                                                                                    statement.setQueryTimeout(30);
-//                                                                                    resultSet = statement.executeQuery(
-//                                                                                            "select * from GeneratedCustomers where customerID="
-//                                                                                                + randomID);
-//                                                                                    // Store retrieved data values into currently created customer.
-//                                                                                    customerID = resultSet.getInt("customerID");
-//                                                                                    firstName = resultSet.getString("firstName");
-//                                                                                    lastName = resultSet.getString("lastName");
-//                                                                                }
+                                                                                try {
+                                                                                    Class.forName("org.sqlite.JDBC");
+                                                                                    connect = DriverManager.getConnection(
+                                                                                            "jdbc:sqlite:CustomerDB.sql");
+                                                                                    statement = connect.createStatement();
+                                                                                    statement.setQueryTimeout(30);
+                                                                                    resultSet = statement.executeQuery(
+                                                                                            "select * from GeneratedCustomers where customerID="
+                                                                                                + randomID);
+                                                                                    // Store retrieved data values into currently created customer.
+                                                                                    customerID = resultSet.getInt("customerID");
+                                                                                    firstName = resultSet.getString("firstName");
+                                                                                    lastName = resultSet.getString("lastName");
+                                                                                }
         // This block includes "path".
-        try {
+        /*try {
             Class.forName("org.sqlite.JDBC");
             connect = DriverManager.getConnection(
                     "jdbc:sqlite:" + path + "CustomerDB.sql");
@@ -69,7 +65,7 @@ public final class Customer {
             customerID = resultSet.getInt("customerID");
             firstName = resultSet.getString("firstName");
             lastName = resultSet.getString("lastName");
-        }
+        }*/
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
