@@ -1,5 +1,6 @@
 package groupassignment;
 
+import java.io.File;
 import javax.swing.*;
 import java.sql.DriverManager;
 import java.sql.Connection;
@@ -42,6 +43,7 @@ public class Timer {
         final int YES = 0;
         final int NO = 1;
         Queue hybridQueue = new Queue();
+        LogDB logDB = new LogDB();
         // The number at which the customer was placed in the queue.
         int customerEnqueueID = 0;
 
@@ -51,28 +53,39 @@ public class Timer {
         Statement statement;
         ResultSet resultSet;
 
-        // Use this to run on InteliJ.
+                                                                                // Use this to run on InteliJ.
+//                                                                                try {
+//                                                                                    Class.forName("org.sqlite.JDBC");
+//                                                                        
+//                                                                                    connect = DriverManager.getConnection("jdbc:sqlite:CustomerDB.sql");
+//                                                                                    statement = connect.createStatement();
+//                                                                                    statement.setQueryTimeout(30);
+//                                                                                    // Get total row count on database.
+//                                                                                    resultSet = statement.executeQuery(
+//                                                                                            "SELECT count(*) AS total FROM GeneratedCustomers");
+//                                                                                    // Store total row count into class variable.
+//                                                                                    nameDatabaseSize = resultSet.getInt("total");
+//                                                                                }
+        
+        
+        // To run from IDE.
+//        String databasePath = getClass().getProtectionDomain().getCodeSource()
+//                .getLocation().getPath() + "CustomerDB.sql";
+        
+        // To run from JAR.
+        String path = getClass().getProtectionDomain().getCodeSource()
+                .getLocation().getPath();
+
+        File getParent = new File(path).getParentFile();
+        String databasePath = getParent.getPath() + "/Databases/CustomerDB.sql";
+
+        // This block includes "path".
         try {
             Class.forName("org.sqlite.JDBC");
 
-            connect = DriverManager.getConnection("jdbc:sqlite:CustomerDB.sql");
-            statement = connect.createStatement();
-            statement.setQueryTimeout(30);
-            // Get total row count on database.
-            resultSet = statement.executeQuery(
-                    "SELECT count(*) AS total FROM GeneratedCustomers");
-            // Store total row count into class variable.
-            nameDatabaseSize = resultSet.getInt("total");
-        }
-        /*
-        // This block includes "path".
-        String path = Timer.class.getProtectionDomain().getCodeSource()
-                .getLocation().getPath();
-        try {
-            Class.forName("org.sqlite.JDBC");
-        
             connect = DriverManager.getConnection(
-                    "jdbc:sqlite:" + path + "CustomerDB.sql");
+                    "jdbc:sqlite:" + databasePath);
+
             statement = connect.createStatement();
             statement.setQueryTimeout(30);
             // Get total row count on database.
@@ -81,13 +94,12 @@ public class Timer {
             // Store total row count into class variable.
             nameDatabaseSize = resultSet.getInt("total");
         }
-        */
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
         
         // Clears any previous log tables information from the customer log.
-        LogDB.clearLog();
+        logDB.clearLog();
         
         // First walk-in customer.
         walkInCustomerTime = poissonRandom(WALK_IN_MEAN);
@@ -102,10 +114,12 @@ public class Timer {
             try{
                 // Dequeue head if finish time equals current time(i).
                 if(hybridQueue.getHead() != null){
-                    if(i == Integer.parseInt(hybridQueue.getHead().getFinishTime())) {
+                    if(i == Integer.parseInt(
+                            hybridQueue.getHead().getFinishTime())) {
+                        
                         Customer tempCustomer = hybridQueue.removeFromQueue();
                         tempCustomer.setQuestionAnswered("YES");
-                        LogDB.enterNewLog(tempCustomer, hybridQueue.size());
+                        logDB.enterNewLog(tempCustomer, hybridQueue.size());
                         results.append(tempCustomer.getFirstName() + " " +
                                 tempCustomer.getLastName() + ", customer " +
                                 tempCustomer.getQueueID() +
@@ -178,10 +192,10 @@ public class Timer {
         }  // primary for loop.
 
         if(hybridQueue.size() > 0){
-            for( ; !hybridQueue.isEmpty(); ) {
+            while(!hybridQueue.isEmpty()) {
                 Customer tempCustomer = hybridQueue.removeFromQueue();
                 tempCustomer.setQuestionAnswered("No");
-                LogDB.enterNewLog(tempCustomer, hybridQueue.size());
+                logDB.enterNewLog(tempCustomer, hybridQueue.size());
             }
         }
     }

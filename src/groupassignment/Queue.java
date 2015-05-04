@@ -1,9 +1,7 @@
 package groupassignment;
-
 /**
  * Created by Jedediah on 4/22/15.
  */
-
 public class Queue  {
     
     private Node head;  // front of linked list

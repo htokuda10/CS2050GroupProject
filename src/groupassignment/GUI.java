@@ -55,18 +55,30 @@ public class GUI {
 
     private Color transparent = new Color(0, 0, 0, 0);
     private Font large = new Font("Sans Serif", Font.PLAIN, 18);
-    private String bgImagePath = "src/groupassignment/resources/dash.jpg";
-    private String bgWest = "src/groupassignment/resources/dash_west.jpg";
-    private String bgCenter = "src/groupassignment/resources/dash_center.jpg";
-    private String bgEast = "src/groupassignment/resources/dash_east.jpg";
+    private ImageIcon bgImagePath = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/dash.jpg"));
+    private ImageIcon bgWest = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/dash_west.jpg"));
+    private ImageIcon bgCenter = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/dash_center.jpg"));
+    private ImageIcon bgEast = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/dash_east.jpg"));
 
     // -------------------------------------------------------------------------
     /**
      * GUI constructor
      */
     public GUI () {
+        ImageIcon simulateIcon = new ImageIcon(getClass().getClassLoader()
+                .getResource("groupassignment/resources/btn_simulate.png"));
+        ImageIcon saveIcon = new ImageIcon(getClass().getClassLoader()
+                .getResource("groupassignment/resources/btn_save.png"));
+        ImageIcon resetIcon = new ImageIcon(getClass().getClassLoader()
+                .getResource("groupassignment/resources/btn_reset.png"));
+        ImageIcon exitIcon = new ImageIcon(getClass().getClassLoader()
+                .getResource("groupassignment/resources/btn_exit.png"));
 
-        contentPane = new JLabel(new ImageIcon(bgImagePath));
+        contentPane = new JLabel(bgImagePath);
         contentPane.setLayout(new BorderLayout());
 
         frame = new JFrame("The Secretary");
@@ -134,7 +146,7 @@ public class GUI {
         westPanel = new JPanel();
         westPanel.setPreferredSize(new Dimension(335, 359));
         westPanel.setLayout(new BorderLayout());
-        JLabel westBG = new JLabel(new ImageIcon(bgWest));
+        JLabel westBG = new JLabel(bgWest);
         westPanel.add(westBG);
         contentPane.add(westPanel, BorderLayout.WEST);
 
@@ -142,7 +154,7 @@ public class GUI {
 
         centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
-        JLabel centerBG = new JLabel(new ImageIcon(bgCenter));
+        JLabel centerBG = new JLabel(bgCenter);
         centerPanel.add(centerBG);
         centerBG.setLayout(new BoxLayout(centerBG, BoxLayout.Y_AXIS));
         centerBG.add(Box.createVerticalStrut(70));
@@ -231,13 +243,13 @@ public class GUI {
         eastPanel.setBackground(new Color(212, 214, 211));
         eastPanel.setLayout(new BorderLayout());
         eastPanel.setPreferredSize(new Dimension(200, 359));
-        JLabel eastBG = new JLabel(new ImageIcon(bgEast));
+        JLabel eastBG = new JLabel(bgEast);
         eastPanel.add(eastBG);
         eastBG.setLayout(new BoxLayout(eastBG, BoxLayout.Y_AXIS));
 
         // [simulate] button
         simulate = new JButton();
-        simulate.setIcon(new ImageIcon("src/groupassignment/resources/btn_simulate.png"));
+        simulate.setIcon(simulateIcon);
         simulate.setOpaque(false);
         simulate.setContentAreaFilled(false);
         simulate.setBorderPainted(false);
@@ -266,7 +278,7 @@ public class GUI {
         // [save] button
         save = new JButton();
         save.setEnabled(false);
-        save.setIcon(new ImageIcon("src/groupassignment/resources/btn_save.png"));
+        save.setIcon(saveIcon);
         save.setOpaque(false);
         save.setContentAreaFilled(false);
         save.setBorderPainted(false);
@@ -290,7 +302,7 @@ public class GUI {
 
         // [reset] button
         reset = new JButton();
-        reset.setIcon(new ImageIcon("src/groupassignment/resources/btn_reset.png"));
+        reset.setIcon(resetIcon);
         reset.setOpaque(false);
         reset.setContentAreaFilled(false);
         reset.setBorderPainted(false);
@@ -307,7 +319,7 @@ public class GUI {
 
         // [exit] button
         exit = new JButton();
-        exit.setIcon(new ImageIcon("src/groupassignment/resources/btn_exit.png"));
+        exit.setIcon(exitIcon);
         exit.setOpaque(false);
         exit.setContentAreaFilled(false);
         exit.setBorderPainted(false);
@@ -385,9 +397,6 @@ public class GUI {
         // run the simulation with chosen parameters
         new Timer(totalTimeSlider.getValue() * 60, // convert to seconds
                 questionSim, walkInSim, callInSim, results);
-
         results.append("\n\nEnd of Simulation.");
-
     }  // displayResults
-
 }  // GUI class
