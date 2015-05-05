@@ -20,6 +20,7 @@ import java.io.IOException;
  */
 public class GUI {
 
+    // frames, panes, and automobiles...or...panels
     private JFrame frame;
     private JLabel contentPane;
     private JPanel northPanel;
@@ -29,32 +30,40 @@ public class GUI {
     private JPanel centerPanel;
     private JPanel eastPanel;
 
+    // used in setting/displaying simulation time value
     private JSlider totalTimeSlider;
     private JLabel totalTimeLabel;
     private JLabel totalTimeValue;
 
+    // used in setting/displaying question mean time
     private JSlider questionMeanSlider;
     private JLabel questionMeanLabel;
     private JLabel questionMeanValue;
     private int questionSim;
 
+    // used in setting/displaying walk-in mean time
     private JSlider walkInMeanSlider;
     private JLabel walkInMeanLabel;
     private JLabel walkInMeanValue;
     private int walkInSim;
 
+    // used in setting/displaying call-in mean time
     private JSlider callInMeanSlider;
     private JLabel callInMeanLabel;
     private JLabel callInMeanValue;
     private int callInSim;
 
+    // buttons
     private JButton simulate;
     private JButton save;
     private JButton reset;
     private JButton exit;
 
+    // style settings
     private Color transparent = new Color(0, 0, 0, 0);
     private Font large = new Font("Sans Serif", Font.PLAIN, 18);
+
+    // custom background images for the JPanels
     private ImageIcon bgImagePath = new ImageIcon(getClass().getClassLoader()
             .getResource("groupassignment/resources/dash.jpg"));
     private ImageIcon bgWest = new ImageIcon(getClass().getClassLoader()
@@ -64,32 +73,36 @@ public class GUI {
     private ImageIcon bgEast = new ImageIcon(getClass().getClassLoader()
             .getResource("groupassignment/resources/dash_east.jpg"));
 
+    // custom images for the buttons
+    ImageIcon simulateIcon = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/btn_simulate.png"));
+    ImageIcon saveIcon = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/btn_save.png"));
+    ImageIcon resetIcon = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/btn_reset.png"));
+    ImageIcon exitIcon = new ImageIcon(getClass().getClassLoader()
+            .getResource("groupassignment/resources/btn_exit.png"));
+
     // -------------------------------------------------------------------------
     /**
      * GUI constructor
      */
     public GUI () {
-        ImageIcon simulateIcon = new ImageIcon(getClass().getClassLoader()
-                .getResource("groupassignment/resources/btn_simulate.png"));
-        ImageIcon saveIcon = new ImageIcon(getClass().getClassLoader()
-                .getResource("groupassignment/resources/btn_save.png"));
-        ImageIcon resetIcon = new ImageIcon(getClass().getClassLoader()
-                .getResource("groupassignment/resources/btn_reset.png"));
-        ImageIcon exitIcon = new ImageIcon(getClass().getClassLoader()
-                .getResource("groupassignment/resources/btn_exit.png"));
 
+        // use JLabel as content pane (image background)
         contentPane = new JLabel(bgImagePath);
         contentPane.setLayout(new BorderLayout());
 
+        // new frame filled with the JLabel
         frame = new JFrame("The Secretary");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLayout(new BorderLayout());
-        frame.add(contentPane);
-        frame.add(contentPane);
+        frame.add(contentPane); // add JLabel
 
         // North --------------------------------
 
+        // this panel displays the settings before running a simulation
         northPanel = new JPanel(new GridLayout(4, 2));
         northPanel.setBorder(new EmptyBorder(10, 20, 20, 0));
         northPanel.setPreferredSize(new Dimension(900, 342));
@@ -139,19 +152,24 @@ public class GUI {
         northPanel.add(callInMeanLabel);
         northPanel.add(callInMeanValue);
 
+        // add north panel to the content pane
         contentPane.add(northPanel, BorderLayout.NORTH);
 
         // West ---------------------------------
 
+        // this panel only displays a section of background image
         westPanel = new JPanel();
         westPanel.setPreferredSize(new Dimension(335, 359));
         westPanel.setLayout(new BorderLayout());
         JLabel westBG = new JLabel(bgWest);
         westPanel.add(westBG);
+
+        // add west panel to the content pane
         contentPane.add(westPanel, BorderLayout.WEST);
 
         // Center -------------------------------
 
+        // this panel contains the 4 sliders for simulation settings
         centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
         JLabel centerBG = new JLabel(bgCenter);
@@ -168,6 +186,7 @@ public class GUI {
         totalTimeSlider.setOpaque(false);
         totalTimeSlider.addChangeListener(new ChangeListener() {
             @Override
+            // display the changing value if/as the slider moves
             public void stateChanged(ChangeEvent e) {
                 totalTimeValue.setText(totalTimeSlider.getValue() + " minutes");
                 if (totalTimeSlider.getValue() == 0)
@@ -187,6 +206,7 @@ public class GUI {
         questionMeanSlider.setOpaque(false);
         questionMeanSlider.addChangeListener(new ChangeListener() {
             @Override
+            // display the changing value if/as the slider moves
             public void stateChanged(ChangeEvent e) {
                 questionMeanValue.setText(questionMeanSlider.getValue() + " seconds");
                 if (questionMeanSlider.getValue() == 0)
@@ -206,6 +226,7 @@ public class GUI {
         walkInMeanSlider.setOpaque(false);
         walkInMeanSlider.addChangeListener(new ChangeListener() {
             @Override
+            // display the changing value if/as the slider moves
             public void stateChanged(ChangeEvent e) {
                 walkInMeanValue.setText(walkInMeanSlider.getValue() + " seconds");
                 if (walkInMeanSlider.getValue() == 0)
@@ -225,6 +246,7 @@ public class GUI {
         callInMeanSlider.setOpaque(false);
         callInMeanSlider.addChangeListener(new ChangeListener() {
             @Override
+            // display the changing value if/as the slider moves
             public void stateChanged(ChangeEvent e) {
                 callInMeanValue.setText(callInMeanSlider.getValue() + " seconds");
                 if (callInMeanSlider.getValue() == 0)
@@ -235,10 +257,12 @@ public class GUI {
         centerBG.add(callInMeanSlider);
         callInMeanValue.setText(callInMeanSlider.getValue() + " seconds");
 
+        // add center panel to the content pane
         contentPane.add(centerPanel, BorderLayout.CENTER);
 
         // East ---------------------------------
 
+        // this panel contains the buttons
         eastPanel = new JPanel();
         eastPanel.setBackground(new Color(212, 214, 211));
         eastPanel.setLayout(new BorderLayout());
@@ -257,20 +281,22 @@ public class GUI {
         simulate.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // can't run a simulation for zero minutes
                 if (totalTimeSlider.getValue() == 0) {
                     JOptionPane.showMessageDialog(frame,
                             "Simulate for ZERO minutes?\nOk, done! No results.",
                             "Really?", JOptionPane.PLAIN_MESSAGE);
                     return;
                 }
-                displayResults();
+                displayResults(); // run simulation and display results
+
                 // no need for these to be enabled at this point
                 simulate.setEnabled(false);
                 totalTimeSlider.setEnabled(false);
                 questionMeanSlider.setEnabled(false);
                 walkInMeanSlider.setEnabled(false);
                 callInMeanSlider.setEnabled(false);
-                save.setEnabled(true);
+                save.setEnabled(true); // enable this one
             }
         });
         eastBG.add(simulate);
@@ -285,6 +311,7 @@ public class GUI {
         save.setFocusPainted(false);
         save.addActionListener(new ActionListener() {
             @Override
+            // allow user to save results as a text file
             public void actionPerformed(ActionEvent e) {
                 JFileChooser chooser = new JFileChooser();
                 int status = chooser.showSaveDialog(frame);
@@ -309,6 +336,7 @@ public class GUI {
         reset.setFocusPainted(false);
         reset.addActionListener(new ActionListener() {
             @Override
+            // close current window and run program again
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 String[] args = {};
@@ -332,6 +360,7 @@ public class GUI {
         });
         eastBG.add(exit);
 
+        // add east panel to the content pane
         contentPane.add(eastPanel, BorderLayout.EAST);
 
         // center the window and make visible
@@ -349,8 +378,10 @@ public class GUI {
      */
     public void displayResults() {
 
+        // remove simulation options and display results instead
         northPanel.removeAll();
         northPanel.setLayout(new BorderLayout());
+        // display the chosen settings for this simulation
         results = new JTextArea("Results from a(n) " +
                 totalTimeSlider.getValue() + "-minute simulation with the" +
                 " following settings: \n\n- " + questionMeanSlider.getValue() +
@@ -364,20 +395,23 @@ public class GUI {
                 "--------------------------------------------------------\n\n");
         results.setForeground(Color.white);
         results.setOpaque(false);
+        // will allow user to scroll through results
         resultsPane = new JScrollPane(results);
         resultsPane.setOpaque(false);
         resultsPane.getViewport().setOpaque(false);
         JScrollBar scrollBar = resultsPane.getVerticalScrollBar();
         scrollBar.addAdjustmentListener(new AdjustmentListener() {
             @Override
+            // repaint the background if the user scrolls the pane
             public void adjustmentValueChanged(AdjustmentEvent e) {
                 frame.repaint();
             }
         });
-        results.setEditable(false);
-        northPanel.add(resultsPane);
+        results.setEditable(false); // make results read-only
+        northPanel.add(resultsPane); // add the scroll pane to the north
         northPanel.validate();
 
+        // if any slider is zero (displayed as infinity), simulate as infinity
         if (questionMeanSlider.getValue() == 0) {
             questionSim = Integer.MAX_VALUE;
         } else {
@@ -394,9 +428,11 @@ public class GUI {
             callInSim = callInMeanSlider.getValue();
         }
 
-        // run the simulation with chosen parameters
+        // run the simulation with chosen settings
         new Timer(totalTimeSlider.getValue() * 60, // convert to seconds
                 questionSim, walkInSim, callInSim, results);
         results.append("\n\nEnd of Simulation.");
+
     }  // displayResults
+
 }  // GUI class

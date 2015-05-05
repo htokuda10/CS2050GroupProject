@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ff718b9-b0ef-41a1-8631-640241580d82" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_exit.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_reset.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_save.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btn_simulate.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btns.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/btns.psd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash.psd" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash_center.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash_east.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/groupassignment/resources/dash_west.jpg" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/groupassignment/resources/btns.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/groupassignment/GUI.java" afterPath="$PROJECT_DIR$/src/groupassignment/GUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="CS2050GroupProject.iws" />
@@ -135,7 +126,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
-    <option name="STATE" value="1" />
+    <option name="STATE" value="2" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -150,6 +141,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="PackagesPane">
         <subPane />
       </pane>
@@ -193,28 +185,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS2050GroupProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS2050GroupProject" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="groupassignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope">
@@ -250,7 +220,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -263,14 +232,14 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHub/PortableGit_c2ba306e536fdf878271f7fe636a147ff37326ad/cmd/git.exe" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/jasonmathews/Dropbox/MSU Denver/2015 spring/CS 2050/CS2050GroupProject/src/groupassignment/Customer.java" />
   </component>
@@ -278,6 +247,166 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/groupassignment" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/LogDB.sql</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/nbproject/private/private.properties</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/nbproject/private/private.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/nbproject/project.properties</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/groupassignment/Customer.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/groupassignment/GUI.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/groupassignment/LogDB.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/groupassignment/Queue.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/groupassignment/Timer.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.gitignore</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/built-jar.properties</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/Database/CustomerDB.sql</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/Database/LogDB.sql</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/Customer.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$2.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$3.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$4.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$5.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$6.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$7.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$8.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI$9.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GUI.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/GroupAssignment.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/LogDB.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/Queue$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/Queue$Node.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/Queue.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/Timer.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/CustomerDB.sql</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/LogDB.sql</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/btn_exit.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/btn_reset.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/btn_save.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/btn_simulate.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/btns.png</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/dash.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/dash_center.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/dash_east.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/classes/groupassignment/resources/dash_west.jpg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/nbproject/private/config.properties</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/groupassignment/Customer.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/groupassignment/GroupAssignment.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/groupassignment/LogDB.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/groupassignment/Queue$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/groupassignment/Queue$Node.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/groupassignment/Queue.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/build/groupassignment/Timer.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/groupassignment/resources/btns.psd</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/groupassignment/resources/dash.psd</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.GroupAssignment">
     <configuration default="false" name="GroupAssignment" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -484,7 +613,18 @@
       <workItem from="1430460682471" duration="26629000" />
       <workItem from="1430519271128" duration="868000" />
       <workItem from="1430520309796" duration="89000" />
-      <workItem from="1430520464421" duration="885000" />
+      <workItem from="1430520464421" duration="1186000" />
+      <workItem from="1430532494785" duration="670000" />
+      <workItem from="1430534140149" duration="142000" />
+      <workItem from="1430535394009" duration="10000" />
+      <workItem from="1430537263773" duration="183000" />
+      <workItem from="1430541315805" duration="178000" />
+      <workItem from="1430542221257" duration="215000" />
+      <workItem from="1430542821024" duration="96000" />
+      <workItem from="1430543050805" duration="659000" />
+      <workItem from="1430618411595" duration="1122000" />
+      <workItem from="1430679454842" duration="160000" />
+      <workItem from="1430712620593" duration="4056000" />
     </task>
     <task id="LOCAL-00001" summary="Updates from Jason">
       <created>1430519952754</created>
@@ -504,11 +644,17 @@
       <option name="project" value="LOCAL" />
       <updated>1430521228461</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updates from Jason">
+      <created>1430521355409</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1430521355410</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87899000" />
+    <option name="totallyTimeSpent" value="95691000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -532,21 +678,21 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3231788" sideWeight="0.5210484" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32664093" sideWeight="0.49682286" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980132" sideWeight="0.49841145" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32664093" sideWeight="0.49682286" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.49841145" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32972974" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24964234" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21405877" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32262772" sideWeight="0.47895154" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22438443" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32046333" sideWeight="0.47895154" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.49427754" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
     <layout-to-restore>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -557,8 +703,8 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17553614" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290653" sideWeight="0.49427754" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17553614" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3231788" sideWeight="0.5210484" order="11" side_tool="false" content_ui="tabs" />
@@ -663,9 +809,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/c3cfd187/2014e9da-b9c8-4e26-a641-b28e4267939c/..customerLog">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/groupassignment/GroupAssignment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19503546">
+        <state vertical-scroll-proportion="0.19642857">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
@@ -673,16 +831,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/groupassignment/Timer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45165095">
-          <caret line="177" column="31" selection-start-line="177" selection-start-column="31" selection-end-line="177" selection-end-column="31" />
-          <folding />
+        <state vertical-scroll-proportion="4.089286">
+          <caret line="229" column="47" selection-start-line="229" selection-start-column="47" selection-end-line="229" selection-end-column="47" />
+          <folding>
+            <marker date="1430712809000" expanded="true" signature="-1:-1" placeholder="SELECT count..GeneratedCustomers..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/groupassignment/GUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33806145">
-          <caret line="343" column="18" selection-start-line="343" selection-start-column="18" selection-end-line="343" selection-end-column="18" />
+        <state vertical-scroll-proportion="5.1617994">
+          <caret line="436" column="4" selection-start-line="436" selection-start-column="4" selection-end-line="436" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -744,7 +904,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
