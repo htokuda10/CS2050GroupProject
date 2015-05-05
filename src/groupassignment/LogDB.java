@@ -1,5 +1,5 @@
 package groupassignment;
-import java.io.File;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * been dequeued.  The LogDB also contains the method that will clear any
  * previous logs in order to prevent overlapping any previously logged
  * information.
- * @author Yuki
+ * @author Hideyuki Tokuda, Jason Mathews, Jedediah Hernandez
  */
 public class LogDB {
     
@@ -22,36 +22,39 @@ public class LogDB {
         
         Connection connect = null;
         Statement statement = null;
-                                                                                // Use this for InteliJ.
-//                                                                                try {
-//                                                                                    Class.forName("org.sqlite.JDBC");
-//
-//                                                                                    connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
-//                                                                                    statement = connect.createStatement();
-//                                                                                    statement.setQueryTimeout(30);
-//                                                                                    statement.executeUpdate("drop table if exists customerLog");
-//                                                                                    statement.executeUpdate("create table customerLog ("
-//                                                                                            + "queueId Integer, customerID Integer, firstName String,"
-//                                                                                            + " lastName String, customerType String,"
-//                                                                                            + " questionAnswered String, startTime Integer,"
-//                                                                                            + " finishTime Integer, questionTime Integer,"
-//                                                                                            + " remainingQueue)");
-//                                                                                }
         
-        // To run from IDE.
+        //======== Code that runs this program from different locations ===
+        
+        // This runs in IDE's that do not require a specified path like InteliJ.
+//        try {
+//            // Import sqlite library.
+//            Class.forName("org.sqlite.JDBC");
+//            // Connect to database.
+//            connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
+//            statement = connect.createStatement();
+//            statement.setQueryTimeout(30);
+//            statement.executeUpdate("drop table if exists customerLog");
+//            statement.executeUpdate("create table customerLog ("
+//                    + "queueId Integer, customerID Integer, firstName String,"
+//                    + " lastName String, customerType String,"
+//                    + " questionAnswered String, startTime Integer,"
+//                    + " finishTime Integer, questionTime Integer,"
+//                    + " remainingQueue)");
+//        }
+        
+        // To run from any IDE.
 //        String databasePath = getClass().getProtectionDomain().getCodeSource()
 //                .getLocation().getPath() + "LogDB.sql";
         
         // To run from JAR.
-        String path = getClass().getProtectionDomain().getCodeSource()
-                .getLocation().getPath();
-        File getParent = new File(path).getParentFile();
-        String databasePath = getParent.getPath() + "/Databases/LogDB.sql";
-        
-        // This block includes "path".
-        try {
-            Class.forName("org.sqlite.JDBC");
+        String databasePath = System.getProperty("user.dir")
+                + "/Databases/LogDB.sql";        
 
+        // This runs in IDE's that require a specified path like Netbeans.
+        try {
+            // Import sqlite library.
+            Class.forName("org.sqlite.JDBC");
+            // Connect to database.
             connect = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
             statement = connect.createStatement();
             statement.setQueryTimeout(30);
@@ -66,6 +69,7 @@ public class LogDB {
         catch(ClassNotFoundException | SQLException ex0) {
             System.err.println(ex0.getMessage());
         }
+        // Close connections.
         finally {
             if(connect != null){
                 try {
@@ -97,37 +101,39 @@ public class LogDB {
         
         Connection connect = null;
         Statement statement = null;
-                                                                                // Use this for InteliJ.
-//                                                                                try {
-//                                                                                    Class.forName("org.sqlite.JDBC");
+        
+        //======== Code that runs this program from different locations ===
+        
+        // This runs in IDE's that do not require a specified path like InteliJ.
+//        try {
+//            Class.forName("org.sqlite.JDBC");
 //
-//                                                                                    connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
-//                                                                                    statement = connect.createStatement();
-//                                                                                    statement.setQueryTimeout(30);
+//            connect = DriverManager.getConnection("jdbc:sqlite:LogDB.sql");
+//            statement = connect.createStatement();
+//            statement.setQueryTimeout(30);
 //
-//                                                                                    statement.executeUpdate("insert into CustomerLog values("
-//                                                                                            + info.getQueueID() + ", "
-//                                                                                            + info.getCustomerID() + ", "
-//                                                                                            + "'" + info.getFirstName() + "'" + ", "
-//                                                                                            + "'" + info.getLastName() + "'" + ", "
-//                                                                                            + "'" + info.getCustomerType() + "'" + ", "
-//                                                                                            + "'" + info.getQuestionAnswered() + "'" + ", "
-//                                                                                            + info.getCreationTime() + ", "
-//                                                                                            + info.getFinishTime() + ", "
-//                                                                                            + info.getQuestionTime() + ", "
-//                                                                                            + Integer.toString(queueSize) + ")");
-//                                                                                }
-        // To run from IDE.
+//            statement.executeUpdate("insert into CustomerLog values("
+//                    + info.getQueueID() + ", "
+//                    + info.getCustomerID() + ", "
+//                    + "'" + info.getFirstName() + "'" + ", "
+//                    + "'" + info.getLastName() + "'" + ", "
+//                    + "'" + info.getCustomerType() + "'" + ", "
+//                    + "'" + info.getQuestionAnswered() + "'" + ", "
+//                    + info.getCreationTime() + ", "
+//                    + info.getFinishTime() + ", "
+//                    + info.getQuestionTime() + ", "
+//                    + Integer.toString(queueSize) + ")");
+//        }
+        
+        // To run from any IDE.
 //        String databasePath = getClass().getProtectionDomain().getCodeSource()
 //                .getLocation().getPath() + "LogDB.sql";
         
         // To run from JAR.
-        String path = getClass().getProtectionDomain().getCodeSource()
-                .getLocation().getPath();
-        File getParent = new File(path).getParentFile();
-        String databasePath = getParent.getPath() + "/Databases/LogDB.sql";
-        
-        // This block includes "PATH".
+        String databasePath = System.getProperty("user.dir")
+                + "/Databases/LogDB.sql";
+
+        // This runs in IDE's that require a specified path like Netbeans.
         try {
             Class.forName("org.sqlite.JDBC");
 
@@ -156,7 +162,7 @@ public class LogDB {
                     connect.close();
                 }
                 catch(SQLException sqlex) {
-                    // Ignore
+                    // Do nothing.
                 }
             }
             if(statement != null) {
@@ -164,7 +170,7 @@ public class LogDB {
                     statement.close();
                 }
                 catch(SQLException sqlex) {
-                    // Ignore
+                    // Do nothing.
                 }
             }
         } // finally

@@ -16,7 +16,7 @@ import java.io.IOException;
 /**
  * The GUI class creates a window that allows a user to run a simulation with
  * the option to adjust 4 different parameters.
- * @author Jason Mathews
+ * @author Hideyuki Tokuda, Jason Mathews, Jedediah Hernandez
  */
 public class GUI {
 

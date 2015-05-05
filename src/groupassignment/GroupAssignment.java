@@ -1,7 +1,7 @@
 package groupassignment;
 /**
  *
- * @author Yuki
+ * @author Hideyuki Tokuda, Jason Mathews, Jedediah Hernandez
  */
 public class GroupAssignment {
     /**

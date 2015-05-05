@@ -1,61 +1,54 @@
 package groupassignment;
 /**
- * Created by Jedediah on 4/22/15.
+ * The Queue class is a queue that places created nodes and the head or at the
+ * tail of the queue dependent on the customer priority.  If the customer has a
+ * priority of 1 they will be pushed to the head, if the priority is a 0 then 
+ * they will be enqueued at the tail.
+ * @author Hideyuki Tokuda, Jason Mathews, Jedediah Hernandez
  */
 public class Queue  {
+    // Front of linked list.
+    private Node head;
+    // End of linked list.
+    private Node tail;
+    // Size of queue.
+    private static int size  = 0;
     
-    private Node head;  // front of linked list
-    private Node tail;  // end of linked list
-    /*
-       Changed by Yuki: changed 'double N' to 'int N'.
-    */
-    private static int N  = 0;
-
+    // Node object.
     private class Node {
-        /*
-           Changed by Yuki:  Changed 'Object data' to 'Customer data'.  This
-           stores the information as a Customer object instead of storing it as
-           a general object.
-        */
-        // data object within node
+        // Data object within node.
         Customer data = null;   
-        // pointer to next node
+        // Pointer to next node.
         Node next = null;      
     }
-
-    // adding phone calls to the front of the queue/linked list
+   /**
+    * addToQueue creates a new node that contains the customer data and adds it
+    * to the queue according to priority.
+    * @param customer new customer.
+    * @param priority priority level of the customer, 1 = call-in, 0 = walk-in.
+    */
     public void addToQueue(Customer customer, int priority) {
         try{
-            /*
-               Changed by Yuki:  This creates a head whether priority is to push
-               or enqueue, and tail will equal head so that way the first node
-               in queue is always pointed to by the head and tail pointers.
-            */
-            if(N == 0){
+            // If queue is empty, set added node to both head and tail.
+            if(size == 0){
                 head = new Node();
                 head.data = customer;
                 tail = head;
             }
             else {
-                // assuming priority  1 is phone call add to front of linked list.
+                // If customer priority is 1 add to the front of linked list.
                 if(priority == 1) {                 
                     Node oldHead = head;
                     head = new Node();
                     head.data = customer;
                     head.next = oldHead;
-                    /*
-                       Changed by Yuki : parseInt instead of changing to int.
-                       Changing customer.getQuestionTime to return an int would
-                       require modifying the log input.  This is cleaner and
-                       more simple.
-                    */
-                    // update times for customers in queue.
+                    // Update times for customers in queue behind the head node.
                     int time = Integer.parseInt(customer.getQuestionTime());
                     for (Node x = head.next; x != null; x = x.next) {
                         x.data.updateTime(time);
                     }
                 } 
-                // else priority is 0 then add the end of linked list.
+                // Else customer priority is 0 add to the end of linked list.
                 else {                           
                     Node oldLast = tail;
                     tail = new Node();
@@ -67,61 +60,50 @@ public class Queue  {
         catch(NullPointerException ex0){
             // Do nothing.
         }
-        N++;
+        size++;
     } // end addToQueue method
-
-    /*
-       Changed by Yuki: Changed return variable from void to Customer.  Need the
-       data from the customer removed from queue to store into the Log database.
-    */
-    // removing from front of linked list
+    /**
+     * removeFromQueue removes the head of the linked list and returns the
+     * customer contained in the node.
+     * @return Customer.
+     */
     public Customer removeFromQueue() {
         Node returnNode = null;
         if (head != null){
             returnNode = head;
             head = head.next;
-            --N;
+            --size;
         }
         return returnNode.data;
     } // end removeFromQueue
-
-    /*
-       Changed by Yuki: Changed the return variable from Object to Customer to
-       return a Customer object rather than a general object.
-    
-       Changed by Yuki: Changed the 'return head;' to 'return head.data'.
-    */
-    // getHead method to get the first item in linked list
+    /**
+     * getHead gets the customer at the head of the linked list.
+     * @return Customer.
+     */
     public Customer getHead() {
         return head.data;
-    } // end getHead method
-
-    /*
-       Changed by Yuki: Changed the return variable from Object to Customer to
-       return a Customer object rather than a general object.
-    
-       Changed by Yuki: Changed the 'return tail;' to 'return tail.data'.
-    */
-    // getTail method to get the last item in linked list
+    }
+    /**
+     * getTail gets the customer at the tail of the linked list.
+     * @return Customer.
+     */
     public Customer getTail() {
         if(tail != null)
             return tail.data;
         return null;
-    } // end getTail method
-
-    // isEmpty method to see if linked list is empty
+    }
+    /**
+     * isEmpty returns a boolean if the linked list contains no nodes.
+     * @return boolean.
+     */
     public boolean isEmpty() {
         return head == null;
     }
-    // Returns the size of the queue.
+    /**
+     * size returns the size of the linked list.
+     * @return int.
+     */
     public int size() {
-        return N;
+        return size;
     }
-    
-//    public void getSizeNew() {
-//        int queueSize = 0;
-//        for (Node x = head.getNext(); x != null; x = x.getNext()) {
-//            queueSize++;
-//            System.out.println("The size of the queue is " + queueSize);
-//        }
 } // end Queue class
